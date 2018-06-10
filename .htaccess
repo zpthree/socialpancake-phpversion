@@ -1,0 +1,146 @@
+RewriteEngine On
+RewriteBase /
+
+# REGISTER
+# RewriteRule ^i/welcome$ register.php [L]
+# RewriteCond %{ENV:REDIRECT_STATUS} !200
+# RewriteRule ^register.php$ http://localhost/i/welcome [L,R=301]
+# RewriteRule ^i/register.php$ http://localhost/i/welcome [L,R=301]
+
+# NOTIFICATIONS
+RewriteRule ^i/notifications$ notifications.php [L]
+RewriteCond %{ENV:REDIRECT_STATUS} !200
+RewriteRule ^notifications.php$ http://localhost/i/notifications [L,R=301]
+RewriteRule ^i/notifications.php$ http://localhost/i/notifications [L,R=301]
+
+# SINGLE POST PAGE
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^i/post/([^/]+)$ post.php?id=$1 [L]
+RewriteRule ^i/post$ post.php [L]
+RewriteCond %{ENV:REDIRECT_STATUS} !200
+RewriteRule ^post.php$ http://localhost/i/post [L,R=301]
+RewriteRule ^i/post.php$ http://localhost/i/post [L,R=301]
+
+# SEARCH RESULTS
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^i/search/([^/]+)$ search.php?q=$1 [L]
+RewriteRule ^i/search$ search.php [L]
+RewriteCond %{ENV:REDIRECT_STATUS} !200
+RewriteRule ^search.php$ http://localhost/i/search [L,R=301]
+RewriteRule ^i/search.php$ http://localhost/i/search [L,R=301]
+
+# SETTINGS
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^i/settings/([^/]+)$ settings.php?deactivate_account=$1 [L]
+RewriteRule ^i/settings$ settings.php [L]
+RewriteCond %{ENV:REDIRECT_STATUS} !200
+RewriteRule ^settings.php$ http://localhost/i/settings [L,R=301]
+RewriteRule ^i/settings.php$ http://localhost/i/settings [L,R=301]
+
+# FAVORITES
+RewriteRule ^i/recommended$ recommended.php [L]
+RewriteCond %{ENV:REDIRECT_STATUS} !200
+RewriteRule ^recommended.php$ http://localhost/i/recommended [L,R=301]
+RewriteRule ^i/recommended.php$ http://localhost/i/recommended [L,R=301]
+
+# RECOMMENDED
+RewriteRule ^i/favorites$ favorites.php [L]
+RewriteCond %{ENV:REDIRECT_STATUS} !200
+RewriteRule ^favorites.php$ http://localhost/i/favorites [L,R=301]
+RewriteRule ^i/favorites.php$ http://localhost/i/favorites [L,R=301]
+
+# FOLLOWING
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^i/following/([^/]+)$ following.php?following=$1 [L]
+RewriteRule ^i/following$ following.php [L]
+RewriteCond %{ENV:REDIRECT_STATUS} !200
+RewriteRule ^following.php$ http://localhost/i/following [L,R=301]
+RewriteRule ^i/following.php$ http://localhost/i/following [L,R=301]
+
+# FOLLOWERS
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^i/followers/([^/]+)$ followers.php?followers=$1 [L]
+RewriteRule ^i/followers$ followers.php [L]
+RewriteCond %{ENV:REDIRECT_STATUS} !200
+RewriteRule ^followers.php$ http://localhost/i/followers [L,R=301]
+RewriteRule ^i/followers.php$ http://localhost/i/followers [L,R=301]
+
+# TRENDING
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^i/trending/hashtag/([^/]+)$ trending.php?hashtag=$1 [L]
+RewriteRule ^i/trending$ trending.php [L]
+RewriteCond %{ENV:REDIRECT_STATUS} !200
+RewriteRule ^trending.php$ http://localhost/i/trending [L,R=301]
+RewriteRule ^i/trending.php$ http://localhost/i/trending [L,R=301]
+
+# MESSAGES
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^i/messages/([^/]+)$ messages.php?convo=$1 [L]
+RewriteRule ^i/messages$ messages.php [L]
+RewriteCond %{ENV:REDIRECT_STATUS} !200
+RewriteRule ^messages.php$ http://localhost/i/messages [L,R=301]
+RewriteRule ^i/messages.php$ http://localhost/i/messages [L,R=301]
+
+# INDEX.PHP
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^i/home/([^/]+)$ index.php?feedView=$1 [L]
+RewriteRule ^i/home$ index.php [L]
+RewriteCond %{ENV:REDIRECT_STATUS} !200
+RewriteRule ^index.php$ http://localhost/i/home [L,R=301]
+RewriteRule ^i/index.php$ http://localhost/i/home [L,R=301]
+
+# USERNAME
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^/]+)$ profile.php?profileUsername=$1 [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^([^/]+)/([^/]+)$ profile.php?profileUsername=$1&action=$2 [L]
+
+# If the requested file is not in hidden_folder as a file
+RewriteCond %{DOCUMENT_ROOT}hidden_folder%{REQUEST_URI} !-f
+
+# AND
+
+# If the requested file not is in hidden_folder as a folder
+RewriteCond %{DOCUMENT_ROOT}hidden_folder%{REQUEST_URI} !-d
+
+# AND
+
+# If the requested file is not in root as a file
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# AND
+
+# If the requested file is not in root as a folder
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# AND
+
+# ???
+RewriteCond %{REQUEST_URI} !^/hidden_folder
+
+# THEN Redirect content
+RewriteRule ^(.*)$ oops.php [L]
+
+####################################################
+
+# Enable the deletion of hidden_folder in urls
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ hidden_folder/$1 [L]
+#########################
+
+# Enable the deletion of hidden_folder in urls
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ hidden_folder/$1 [L]

@@ -1,0 +1,236 @@
+* {
+	box-sizing: border-box;
+}
+body,
+html {
+	width: 100%;
+	background-color: #dfe3e2;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #bebebe inset !important;
+}
+
+.wrapper {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+.top-bar-outer {
+	background: #09815a;
+	padding: 20px 15px;
+}
+
+.top-bar {
+	margin: 100%;
+	max-width: 1200px;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.logo {
+	display: flex;
+	align-items: flex-start;
+}
+
+.logo img {
+	height: 60px;
+	margin: auto auto 15px;
+}
+
+#beta {
+	height: 10px;
+	margin: 15px 0 auto 0;
+}
+
+.error-message {
+		padding: 0 5px;
+		color: #3f3f3f;
+}
+
+#login-form .error-message {
+	color: #fff;
+}
+
+.form-error {
+	border: 3px solid red;
+}
+
+#login-form form {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+#login-form input {
+	width: 100%;
+}
+
+#log_submit {
+	background: #04402d;
+	color: #fafafa;
+	transition: transform .2s ease-out;
+	padding: 15px;
+}
+
+#login-form form input:not([disabled]):not([type="submit"]) {
+	background: #eaeaea;
+}
+
+#login-form form input:not([disabled]):not([type="submit"]):focus,
+#login-form form input:not([disabled]):not([type="submit"]):-webkit-autofill:focus {
+	background: #dadada;
+}
+
+#log_submit:focus {
+	background: #218d6a;
+}
+
+#log_submit:active {
+	transition: transform .02s ease-in;
+	transform: scale(.99);
+}
+
+.blurb-outer {
+	width: 100%;
+	max-width: 700px;
+	padding: 20px 25px 50px 0;
+}
+
+#blurb {
+	color: #606060;
+	width: 100%;
+	max-width: 700px;
+	margin: 0 auto;
+	font-size: 1.25em;
+}
+
+#blurb p {
+	margin: 0 auto 10px;
+}
+
+#blurb span {
+	font-weight: bold;
+	font-size: 1.26em;
+	color: #606060;
+}
+
+#blurb a {
+	color: #606060;
+}
+
+.main {
+	width: 100%;
+	max-width: 1200px;
+	margin: 30px auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 15px;
+}
+
+#register-form {
+	width: 450px;
+	margin: 0 auto;
+	background: #fff;
+	border-radius: 5px;
+}
+
+.reg-header {
+	background: #09815a;
+	margin: 0 0 20px;
+	padding: 20px;
+}
+
+h3 {
+	color: #fafafa;
+	margin: 0;
+	text-align: center;
+}
+
+#register-form form {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	padding: 0 20px 20px;
+}
+
+#username-holder {
+	width: calc(100% - 10px);
+	margin: auto;
+}
+
+#username-holder input {
+	width: 100%;
+	margin: auto auto 5px;
+}
+
+#name-holder,
+#email-holder,
+#password-holder {
+	display: flex;
+	width: 100%;
+}
+
+#name-holder input,
+#email-holder input,
+#password-holder input {
+	width: 50%;
+}
+
+form input {
+	height: 45px;
+	margin: 5px;
+	padding: 10px;
+	border: none;
+	outline: none;
+}
+
+#register-form form input:not([disabled]):not([type="submit"]) {
+	background: #dadada;
+}
+
+#register-form form input:focus:not([disabled]):not([type="submit"]) {
+	background: #e4e4e4;
+}
+
+input::placeholder {
+	color: #333;
+}
+
+
+#reg_submit{
+	background: #04402d;
+	color: #fafafa;
+	transition: transform .2s ease-out;
+}
+
+#reg_submit:focus {
+	transition: transform .025s ease-in;
+	transform: scale(.95);
+}
+
+.form-warning {
+	border: 3px solid #be3c42;
+}
+
+@media screen and (min-width: 650px) {
+	#login-form input {
+		width: auto;
+	}
+
+	.logo {
+		margin: auto auto auto 0;
+	}
+}
